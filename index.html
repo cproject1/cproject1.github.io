@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html>
 <script src="https://js.stripe.com/v3/"></script>
-<script src="https://cproject1.github.io/stripe.js"></script>
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
-<?php include 'finance5d2x.php';?>
+
+<?php
+
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+\Stripe\Stripe::setApiKey('sk_test_jO9OVpE95lADuDqnToTkpMMi00Tbldfl4o');
+
+$session = \Stripe\Checkout\Session::create([
+  'payment_method_types' => ['card'],
+  'line_items' => [[
+    'name' => 'Financial Abundance Sessions, 5 days, 2x/day',
+    'description' => 'I will do 5 days of sessions, 2 times per day.',
+    'images' => [''],
+    'amount' => 5,
+    'currency' => 'usd',
+    'quantity' => 1,
+  ]],
+  'success_url' => 'https://www.consciousnessproject.net/p/thank-you-for-purchasing.html?session_id={CHECKOUT_SESSION_ID}',
+  'cancel_url' => 'https://www.consciousnessproject.net/p/cancel.html',
+]);
+
+?>
+<script>
+var stripe = Stripe('pk_test_pmSONJezPqreh5SXJ6lJpYsL');
+
+stripe.redirectToCheckout({
+  // Make the id field from the Checkout Session creation API response
+  // available to this file, so you can provide it as parameter here
+  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+  sessionId: '{{CHECKOUT_SESSION_ID}}'
+}).then(function (result) {
+  // If `redirectToCheckout` fails due to a browser or network
+  // error, display the localized error message to your customer
+  // using `result.error.message`.
+});
+</script>
+
 </body>
 </html>
