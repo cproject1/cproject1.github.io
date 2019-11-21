@@ -1,6 +1,3 @@
-<!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
-
 <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
 <button
   style="background-color:#FFFFFF;color:#6772E5;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
@@ -12,7 +9,6 @@
 
 <div id="error-message"></div>
 
-<script>
 (function() {
   var stripe = Stripe('pk_live_Bb2kwktBIE7yPljfK6DcFxev');
 
@@ -41,4 +37,3 @@
     });
   });
 })();
-</script>
