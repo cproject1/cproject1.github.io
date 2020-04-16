@@ -1,14 +1,15 @@
+<!DOCTYPE html>
 <html>
 	<head>
 	</head>
 	<body>
-<!-- Load Stripe.js on your website. -->
+		<!-- Load Stripe.js on your website. -->
 <script src="https://js.stripe.com/v3"></script>
 
 <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
 <button
   style="background-color:#6772E5;color:#FFF;padding:4px 6px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-sku_H6rDygaAOR1jCu"
+  id="checkout-button-sku_H6rIboRbiuSnv4"
   role="link"
 >
   Pay with Stripe
@@ -20,12 +21,12 @@
 (function() {
   var stripe = Stripe('pk_live_Bb2kwktBIE7yPljfK6DcFxev');
 
-  var checkoutButton = document.getElementById('checkout-button-sku_H6rDygaAOR1jCu');
+  var checkoutButton = document.getElementById('checkout-button-sku_H6rIboRbiuSnv4');
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      items: [{sku: 'sku_H6rDygaAOR1jCu', quantity: 1}],
+      items: [{sku: 'sku_H6rIboRbiuSnv4', quantity: 1}],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
@@ -47,5 +48,5 @@
 })();
 </script>
 
-</body>
+	</body>
 </html>
